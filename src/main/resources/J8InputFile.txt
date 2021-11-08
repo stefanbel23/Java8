@@ -1,0 +1,10 @@
+Dan,Gherman,25.06.1994
+Vlad,Marin,11.03.1987
+Ionut,Matei,03.11.1956
+Marian,Gheorghe,19.01.1998
+Maria,Zarnescu,21.03.1993
+Diana,Pascariu,03.03.2001
+Ana,Mihut,12.05.1992
+Andreea,Vasile,29.12.1979
+Sorin,Agapie,14.03.1965
+Nicusor,Jurma,26.06.1988
