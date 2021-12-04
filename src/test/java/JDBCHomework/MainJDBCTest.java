@@ -127,6 +127,7 @@ public class MainJDBCTest {
     public void testSelectFromAccommodation() throws SQLException {
         PreparedStatement ps = conn.prepareStatement("select * from accommodation");
         ResultSet resultSet = ps.executeQuery();
+        System.out.println('\n');
         while (resultSet.next()) {
             String type = resultSet.getString("type");
             int id = resultSet.getInt("id");
@@ -140,6 +141,7 @@ public class MainJDBCTest {
     public void testSelectFromRoomFare() throws SQLException {
         PreparedStatement ps = conn.prepareStatement("select * from room_fare");
         ResultSet resultSet = ps.executeQuery();
+        System.out.println('\n');
         while (resultSet.next()) {
             String season = resultSet.getString("season");
             int id = resultSet.getInt("id");
@@ -152,16 +154,19 @@ public class MainJDBCTest {
 
     @Test
     public void testSelectByCriteria() throws SQLException {
-        PreparedStatement ps = conn.prepareStatement("select * from accommodation join room_fare where accommodation.max_guests = 2");
+        PreparedStatement ps = conn.prepareStatement("select accommodation.type, room_fare.season, room_fare.price from accommodation_fare_relation " +
+                "inner join accommodation on accommodation_fare_relation.id_accommodation = accommodation.id " +
+                "inner join room_fare on accommodation_fare_relation.id_room_fare = room_fare.id " +
+                "where room_fare.price >= 200");
         ResultSet resultSet = ps.executeQuery();
+        System.out.println('\n');
         while (resultSet.next()) {
             String season = resultSet.getString("season");
             int value = resultSet.getInt("price");
             String type = resultSet.getString("type");
-            System.out.println(type + " " + season + " " + value);
+            System.out.println("===> " + type + " during " + season + " is " + value);
 
         }
-
     }
 
 }
